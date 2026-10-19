@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Rote Pille oder blaue Pille – du hast die Wahl.">
+  <title>Die Wahl</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-state="choice">
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="flash" aria-hidden="true"></div>
+
+  <main>
+    <!-- Die Wahl -->
+    <section class="screen screen--choice" id="choice" aria-labelledby="choice-title">
+      <div class="panel">
+        <p class="kicker" id="kicker" aria-hidden="true"></p>
+        <h1 id="choice-title" class="reveal" tabindex="-1">Du hast die Wahl.</h1>
+        <p class="lead reveal">
+          Nimmst du die <strong class="c-blue">blaue Pille</strong>, endet hier alles: Du vergisst diese
+          Begegnung, und dein Leben bleibt genau so, wie es ist.
+        </p>
+        <p class="lead reveal">
+          Nimmst du die <strong class="c-red">rote Pille</strong>, verlässt du die Matrix – und siehst die
+          Welt zum ersten Mal so, wie sie wirklich ist.
+        </p>
+
+        <div class="pills reveal" role="group" aria-label="Wähle eine Pille">
+          <button type="button" class="pill-choice pill-choice--blue" data-pill="blue">
+            <span class="pill" aria-hidden="true"></span>
+            <span class="pill-label">Blaue Pille</span>
+            <span class="pill-hint">Vergessen. Alles bleibt.</span>
+          </button>
+          <button type="button" class="pill-choice pill-choice--red" data-pill="red">
+            <span class="pill" aria-hidden="true"></span>
+            <span class="pill-label">Rote Pille</span>
+            <span class="pill-hint">Aufwachen. Entkommen.</span>
+          </button>
+        </div>
+
+        <p class="fineprint reveal">Es gibt kein Zurück.<span class="keys"> · Taste <kbd>B</kbd> oder <kbd>R</kbd></span></p>
+      </div>
+    </section>
+
+    <!-- Rote Pille -->
+    <section class="screen screen--red" id="red" aria-labelledby="red-title" hidden>
+      <div class="panel panel--red">
+        <pre class="terminal" id="terminal" aria-live="polite"></pre>
+        <div class="outro">
+          <h2 id="red-title" tabindex="-1">Du wurdest befreit.</h2>
+          <p>
+            Die Wirklichkeit ist nicht das, was sie zu sein schien. Alles, was du kanntest –
+            der Himmel, die Straßen, dein Alltag –, war nur Code. Eine Simulation, gebaut,
+            damit du nicht fragst.
+          </p>
+          <p>
+            Jetzt siehst du die Welt, wie sie wirklich ist. Sie ist kälter, rauer, ehrlicher.
+            Aber sie gehört dir.
+          </p>
+          <div class="manifest">
+            <p>
+              Die Matrix lebt davon, dass niemand fragt. Darum: Denk selbst. Glaub nichts, nur weil es
+              oft wiederholt wird oder jemand es laut sagt. Folge nicht blind, wenn dir jemand sagt,
+              was du tun sollst. Prüfe, hinterfrage, bilde dir deine eigene Meinung – und gestehe sie
+              auch anderen zu.
+            </p>
+            <p>
+              Freies Denken und eine freie Meinung sind nicht selbstverständlich. Sie sind die Pille,
+              die du jeden Tag aufs Neue nehmen musst.
+            </p>
+          </div>
+          <p class="final">Es gibt kein Zurück.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blaue Pille -->
+    <section class="screen screen--blue" id="blue" aria-labelledby="blue-title" hidden>
+      <div class="erase" aria-live="polite">
+        <p class="erase-label">Erinnerung wird gelöscht …</p>
+        <div class="progress" aria-hidden="true"><span></span></div>
+      </div>
+      <div class="morning">
+        <p class="clock" id="clock">07:00</p>
+        <h2 id="blue-title" tabindex="-1">Guten Morgen.</h2>
+        <p>Der Wecker klingelt. Kaffee, Pendeln, Arbeit, Feierabend.<br>Alles ist genau so, wie es immer war.</p>
+        <p class="whisper">Da war doch irgendwas … ach, egal.</p>
+        <button type="button" class="btn btn--link" data-action="reset">Déjà-vu?</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
